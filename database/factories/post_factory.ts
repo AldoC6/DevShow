@@ -17,7 +17,7 @@ export const PostFactory = factory
         'Fitness Tracking Mobile App',
       ]),
       url: faker.internet.url(),
-      summary: faker.lorem.paragraphs(5),
+      summary: faker.lorem.paragraphs(3),
     }
   })
   .build()
