@@ -8,7 +8,7 @@ import { BaseModel, column } from '@adonisjs/lucid/orm'
 import { DateTime } from 'luxon'
 
 export class CommentSchema extends BaseModel {
-  static $columns = ['content', 'createdAt', 'id', 'updatedAt'] as const
+  static $columns = ['content', 'createdAt', 'id', 'postId', 'updatedAt', 'userId'] as const
   $columns = CommentSchema.$columns
   @column()
   declare content: string
@@ -16,12 +16,16 @@ export class CommentSchema extends BaseModel {
   declare createdAt: DateTime | null
   @column({ isPrimary: true })
   declare id: number
+  @column()
+  declare postId: number
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime | null
+  @column()
+  declare userId: number
 }
 
 export class PostSchema extends BaseModel {
-  static $columns = ['createdAt', 'id', 'summary', 'title', 'updatedAt', 'url'] as const
+  static $columns = ['createdAt', 'id', 'summary', 'title', 'updatedAt', 'url', 'userId'] as const
   $columns = PostSchema.$columns
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime | null
@@ -35,6 +39,8 @@ export class PostSchema extends BaseModel {
   declare updatedAt: DateTime | null
   @column()
   declare url: string
+  @column()
+  declare userId: number
 }
 
 export class UserSchema extends BaseModel {
