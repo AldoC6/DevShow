@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { type Data } from '@generated/data'
+import { Link } from '@adonisjs/inertia/vue';
 
 
 const props = defineProps<{
@@ -16,7 +17,7 @@ const props = defineProps<{
 
     <div 
     v-for="post in posts"
-    :Link="post.id"
+    :key="post.id"
     >
       <div class="post-item">
           <h2>{{ post.title }}</h2>
@@ -34,7 +35,9 @@ const props = defineProps<{
 
             <span>.</span>
             <div>
-              <a :href="`posts/${post.id}`">View comments</a>
+              <Link :href="`/posts/${post.id}`">
+                View comments
+              </Link>
             </div>
           </div>
         </div>
