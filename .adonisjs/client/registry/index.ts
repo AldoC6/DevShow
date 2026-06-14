@@ -18,11 +18,29 @@ const routes = {
     tokens: [{"old":"/posts","type":0,"val":"posts","end":""}],
     types: placeholder as Registry['posts.index']['types'],
   },
+  'posts.create': {
+    methods: ["GET","HEAD"],
+    pattern: '/posts/create',
+    tokens: [{"old":"/posts/create","type":0,"val":"posts","end":""},{"old":"/posts/create","type":0,"val":"create","end":""}],
+    types: placeholder as Registry['posts.create']['types'],
+  },
+  'posts.store': {
+    methods: ["POST"],
+    pattern: '/posts',
+    tokens: [{"old":"/posts","type":0,"val":"posts","end":""}],
+    types: placeholder as Registry['posts.store']['types'],
+  },
   'posts.show': {
     methods: ["GET","HEAD"],
     pattern: '/posts/:id',
     tokens: [{"old":"/posts/:id","type":0,"val":"posts","end":""},{"old":"/posts/:id","type":1,"val":"id","end":""}],
     types: placeholder as Registry['posts.show']['types'],
+  },
+  'comments.store': {
+    methods: ["POST"],
+    pattern: '/posts/:id/comment',
+    tokens: [{"old":"/posts/:id/comment","type":0,"val":"posts","end":""},{"old":"/posts/:id/comment","type":1,"val":"id","end":""},{"old":"/posts/:id/comment","type":0,"val":"comment","end":""}],
+    types: placeholder as Registry['comments.store']['types'],
   },
   'new_account.create': {
     methods: ["GET","HEAD"],

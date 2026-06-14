@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { type Data } from '@generated/data'
 import { Link } from '@adonisjs/inertia/vue';
+import router from '@adonisjs/core/services/router';
 
 
 const props = defineProps<{
@@ -35,7 +36,7 @@ const props = defineProps<{
 
             <span>.</span>
             <div>
-              <Link :href="`/posts/${post.id}`">
+              <Link route="posts.show" :params="{id: post.id}" >
                 View comments
               </Link>
             </div>

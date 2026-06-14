@@ -13,7 +13,13 @@ import router from '@adonisjs/core/services/router'
 
 router.on('/').renderInertia('home', {}).as('home')
 router.get('/posts', [controllers.Posts, 'index'])
+
+router.get('/posts/create', [controllers.Posts, 'create']).use(middleware.auth())
+router.post('/posts', [controllers.Posts, 'store']).use(middleware.auth())
+
 router.get('/posts/:id', [controllers.Posts, 'show'])
+
+router.post('/posts/:id/comment', [controllers.Comments, 'store']).use(middleware.auth())
 
 router
   .group(() => {
