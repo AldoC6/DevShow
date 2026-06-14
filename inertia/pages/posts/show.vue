@@ -25,6 +25,25 @@ const props = defineProps<{
         </div>
 
         <div class="post-summary">{{ post.summary }}</div>
+
+        <div class="post-comments" >
+          <h2>Comments</h2>
+          <div v-if="post.comments && post.comments.length > 0">
+            <div v-for="comment in post.comments" :key="comment.id">
+              <p>{{ comment.content }}</p>
+              <div class="comment-meta">
+                By {{ comment.author.fullName }} on{{' '}} {{ comment.createdAt && new Date(comment.createdAt).toLocaleDateString('en-US', {
+                  month: 'short',
+                  day: 'numeric',
+                  year: 'numeric',
+                }) }}
+              </div>
+            </div>
+          </div>
+          <div v-else>
+            <p>No comments yet.</p>
+          </div>
+        </div>
       </div>
     </div>
 </template>

@@ -20,6 +20,9 @@ export default class PostsController {
         const post = await Post.query()
             .where('id', params.id)
             .preload('user')
+            .preload('comments', (query) => {
+                query.preload('user').orderBy('createdAt', 'asc')
+            })
             .firstOrFail()
 
         return inertia.render('posts/show', {
