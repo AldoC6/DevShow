@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { type Data } from '@generated/data'
 import { Link } from '@adonisjs/inertia/vue';
-import router from '@adonisjs/core/services/router';
 
 
 const props = defineProps<{
@@ -14,6 +13,7 @@ const props = defineProps<{
   <div class="container">
     <div class="posts-list-title">
       <h1>Posts</h1>
+      <Link route="posts.create" class="button">Create new post</Link>
     </div>
 
     <div 

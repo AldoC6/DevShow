@@ -1,10 +1,13 @@
 <script setup lang="ts">
-import { Form } from '@adonisjs/inertia/vue';
+import { Form, Link } from '@adonisjs/inertia/vue';
 </script>
 
 <template>
   <div class="form-container">
     <div>
+      <Link route="posts.index">
+          &lsaquo; Go back to posts listing
+      </Link>
       <h1>Share your creation</h1>
       <p>Share the URL and a short summary of your creation</p>
     </div>

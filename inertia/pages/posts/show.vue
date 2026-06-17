@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { type Data } from '@generated/data'
-import { Form } from '@adonisjs/inertia/vue'
-import { error } from 'node:console';
+import { Form, Link } from '@adonisjs/inertia/vue'
 
 const props = defineProps<{
   post: Data.Post
@@ -10,6 +9,9 @@ const props = defineProps<{
 
 <template>
   <div class="container">
+      <Link route="posts.index">
+        &lsaquo; Go back to posts listing
+      </Link>
       <div>
         <h1>{{ post.title }}</h1>
       </div>
