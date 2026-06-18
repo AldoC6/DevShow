@@ -9,7 +9,11 @@ export type ScannedRoutes = {
     'posts.create': { paramsTuple?: []; params?: {} }
     'posts.store': { paramsTuple?: []; params?: {} }
     'posts.show': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'posts.edit': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'posts.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'posts.destroy': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'comments.store': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'comments.destroy': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'new_account.create': { paramsTuple?: []; params?: {} }
     'new_account.store': { paramsTuple?: []; params?: {} }
     'session.create': { paramsTuple?: []; params?: {} }
@@ -21,6 +25,7 @@ export type ScannedRoutes = {
     'posts.index': { paramsTuple?: []; params?: {} }
     'posts.create': { paramsTuple?: []; params?: {} }
     'posts.show': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'posts.edit': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'new_account.create': { paramsTuple?: []; params?: {} }
     'session.create': { paramsTuple?: []; params?: {} }
   }
@@ -29,6 +34,7 @@ export type ScannedRoutes = {
     'posts.index': { paramsTuple?: []; params?: {} }
     'posts.create': { paramsTuple?: []; params?: {} }
     'posts.show': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'posts.edit': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'new_account.create': { paramsTuple?: []; params?: {} }
     'session.create': { paramsTuple?: []; params?: {} }
   }
@@ -38,6 +44,13 @@ export type ScannedRoutes = {
     'new_account.store': { paramsTuple?: []; params?: {} }
     'session.store': { paramsTuple?: []; params?: {} }
     'session.destroy': { paramsTuple?: []; params?: {} }
+  }
+  PUT: {
+    'posts.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+  }
+  DELETE: {
+    'posts.destroy': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'comments.destroy': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
   }
 }
 declare module '@adonisjs/core/types/http' {

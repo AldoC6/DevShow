@@ -19,7 +19,15 @@ router.post('/posts', [controllers.Posts, 'store']).use(middleware.auth())
 
 router.get('/posts/:id', [controllers.Posts, 'show'])
 
+router.get('/posts/:id/edit', [controllers.Posts, 'edit']).use(middleware.auth())
+router.put('/posts/:id', [controllers.Posts, 'update']).use(middleware.auth())
+router.delete('/posts/:id', [controllers.Posts, 'destroy']).use(middleware.auth())
+
 router.post('/posts/:id/comment', [controllers.Comments, 'store']).use(middleware.auth())
+
+router
+  .delete('/comments/:id', [controllers.Comments, 'destroy'])
+  .use(middleware.auth())
 
 router
   .group(() => {

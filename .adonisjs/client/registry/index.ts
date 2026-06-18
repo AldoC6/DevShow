@@ -36,11 +36,35 @@ const routes = {
     tokens: [{"old":"/posts/:id","type":0,"val":"posts","end":""},{"old":"/posts/:id","type":1,"val":"id","end":""}],
     types: placeholder as Registry['posts.show']['types'],
   },
+  'posts.edit': {
+    methods: ["GET","HEAD"],
+    pattern: '/posts/:id/edit',
+    tokens: [{"old":"/posts/:id/edit","type":0,"val":"posts","end":""},{"old":"/posts/:id/edit","type":1,"val":"id","end":""},{"old":"/posts/:id/edit","type":0,"val":"edit","end":""}],
+    types: placeholder as Registry['posts.edit']['types'],
+  },
+  'posts.update': {
+    methods: ["PUT"],
+    pattern: '/posts/:id',
+    tokens: [{"old":"/posts/:id","type":0,"val":"posts","end":""},{"old":"/posts/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['posts.update']['types'],
+  },
+  'posts.destroy': {
+    methods: ["DELETE"],
+    pattern: '/posts/:id',
+    tokens: [{"old":"/posts/:id","type":0,"val":"posts","end":""},{"old":"/posts/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['posts.destroy']['types'],
+  },
   'comments.store': {
     methods: ["POST"],
     pattern: '/posts/:id/comment',
     tokens: [{"old":"/posts/:id/comment","type":0,"val":"posts","end":""},{"old":"/posts/:id/comment","type":1,"val":"id","end":""},{"old":"/posts/:id/comment","type":0,"val":"comment","end":""}],
     types: placeholder as Registry['comments.store']['types'],
+  },
+  'comments.destroy': {
+    methods: ["DELETE"],
+    pattern: '/comments/:id',
+    tokens: [{"old":"/comments/:id","type":0,"val":"comments","end":""},{"old":"/comments/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['comments.destroy']['types'],
   },
   'new_account.create': {
     methods: ["GET","HEAD"],

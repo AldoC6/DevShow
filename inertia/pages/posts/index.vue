@@ -24,7 +24,7 @@ const props = defineProps<{
           <h2>{{ post.title }}</h2>
 
           <div class="post-meta">
-            <div>By {{ post.author.fullName }}</div>
+            <div v-if="post.author">By {{ post.author.fullName }}</div>
 
             <span>.</span>
 

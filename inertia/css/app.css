@@ -328,7 +328,7 @@ button:hover {
 }
 .comment-actions button {
   padding: 0;
-  background: none;
+  background: gray;
   cursor: pointer;
 }
 

@@ -3,7 +3,7 @@ import { type Data } from '@generated/data'
 import { Form, Link } from '@adonisjs/inertia/vue'
 
 const props = defineProps<{
-  post: Data.Post
+  post: Data.Post.Variants['forDetailedView']
 }>()
 </script>
 
@@ -18,7 +18,7 @@ const props = defineProps<{
 
       <div class="post">
         <div className="post-meta">
-          <div>By {{post.author.fullName}}</div>
+          <div v-if="post.author">By {{post.author.fullName}}</div>
 
           <span>.</span>
           <div>
@@ -29,6 +29,21 @@ const props = defineProps<{
         </div>
 
         <div class="post-summary">{{ post.summary }}</div>
+
+        <div v-if="post.can.edit" class="post-actions">
+          <Link route="posts.edit" :params="{id: post.id}" >
+            Edit post
+          </Link>
+        </div>
+
+        <div v-if="post.can.delete">
+          <span>.</span>
+          <Form route="posts.destroy" :params="{id: post.id}">
+            <button type="submit" class="destructive">
+              Delete
+            </button>
+          </Form>
+        </div>
 
         <div class="post-comments" >
           <h2>Comments</h2>
@@ -60,6 +75,13 @@ const props = defineProps<{
                   day: 'numeric',
                   year: 'numeric',
                 }) }}
+              </div>
+              <div v-if="comment.can.delete" class="comment-actions">
+                <Form route="comments.destroy" :params="{id: comment.id}">
+                  <button type="submit" class="destructive">
+                    Delete
+                  </button>
+                </Form>
               </div>
             </div>
           </div>

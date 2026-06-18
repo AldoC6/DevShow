@@ -1,8 +1,8 @@
 import { CommentSchema } from '#database/schema'
 import { belongsTo } from '@adonisjs/lucid/orm'
-import User from './user.ts'
+import User from './user.js'
 import { type BelongsTo } from '@adonisjs/lucid/types/relations'
-import Post from './post.ts'
+import Post from './post.js'
 
 export default class Comment extends CommentSchema {
 
